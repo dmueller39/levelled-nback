@@ -31,9 +31,10 @@ type Props = {
   windowWidth: number,
   windowHeight: number,
   onStart: (GamePlan) => void,
+  onCancel: () => void,
 };
 
-type State = { demoGamePlan: GamePlan };
+type State = { demoGamePlan: GamePlan, isDemo: boolean };
 
 export default class LevelInfo extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -41,82 +42,93 @@ export default class LevelInfo extends React.Component<Props, State> {
     const demoGamePlan = getGamePlan(this.props.location.gameLevel);
     this.state = {
       demoGamePlan,
+      isDemo: false,
     };
   }
-
-  _onPressPracticeInfo = () => {
-    Alert.alert(
-      "Practice",
-      "Practice rounds count towards your weekly training goal, but don't impact your history."
-    );
-  };
 
   _onStart = () => {
     const gamePlan = getGamePlan(this.props.location.gameLevel);
     this.props.onStart(gamePlan);
   };
 
-  renderStartUI() {
-    if (getIsMastered(this.props.location)) {
+  _onDemo = () => {
+    this.setState({
+      isDemo: true,
+    });
+  };
+
+  _onCancel = () => {
+    if (this.state.isDemo) {
+      this.setState({
+        isDemo: false,
+      });
+    } else {
+      this.props.onCancel();
+    }
+  };
+
+  render() {
+    if (this.state.isDemo) {
       return (
-        <View style={styles.hContainer}>
-          <Text style={styles.practiceButton} onPress={this._onStart}>
-            Practice
-          </Text>
-          <TouchableOpacity
-            style={styles.practiceInfoButton}
-            onPress={this._onPressPracticeInfo}
-          >
-            <Ionicons name="md-information-circle" size={24} color="grey" />
-          </TouchableOpacity>
+        <View
+          style={[
+            {
+              width: this.props.windowWidth,
+              height: this.props.windowHeight,
+            },
+            styles.container,
+          ]}
+        >
+          <View style={styles.hContainer}>
+            <Text style={styles.cancelButton} onPress={this._onCancel}>
+              Cancel
+            </Text>
+            <Text style={styles.playButton} onPress={this._onStart}>
+              Start
+            </Text>
+          </View>
+          <Demo
+            height={this.props.windowHeight - 64}
+            width={Math.min(this.props.windowWidth, 600)}
+            gamePlan={this.state.demoGamePlan}
+          />
         </View>
       );
-    } else {
-      return (
+    }
+
+    return (
+      <View
+        style={[
+          {
+            width: this.props.windowWidth,
+            height: this.props.windowHeight,
+          },
+          styles.container,
+        ]}
+      >
         <View style={styles.hContainer}>
+          <Text style={styles.cancelButton} onPress={this._onCancel}>
+            Cancel
+          </Text>
           <Text style={styles.playButton} onPress={this._onStart}>
             Start
           </Text>
         </View>
-      );
-    }
-  }
-
-  render() {
-    const playUI = this.renderStartUI();
-    return (
-      <View
-        style={[
-          { width: this.props.windowWidth, height: this.props.windowHeight },
-          styles.container,
-        ]}
-      >
-        <View
-          style={[
-            styles.header,
-            { width: Math.min(this.props.windowWidth, 600) },
-          ]}
-        >
-          <View style={{ flex: 1 }}>
-            <Text style={styles.headerText}>
-              {this.state.demoGamePlan.positions != null &&
-              this.state.demoGamePlan.colors != null
-                ? "Dual"
-                : ""}{" "}
-              {this.state.demoGamePlan.nBack}-Back{"\n"}
-              {this.state.demoGamePlan.gameTurns -
-                this.state.demoGamePlan.nBack}{" "}
-              Turns
-            </Text>
-          </View>
-
-          {playUI}
+        <View style={{ flex: 1, justifyContent: "center" }}>
+          <Text style={styles.headerText}>
+            {this.state.demoGamePlan.positions != null &&
+            this.state.demoGamePlan.colors != null
+              ? "Dual"
+              : ""}{" "}
+            {this.state.demoGamePlan.nBack}-Back{"\n"}
+            {this.state.demoGamePlan.gameTurns -
+              this.state.demoGamePlan.nBack}{" "}
+            Turns
+          </Text>
+          <Text style={styles.playButton} onPress={this._onDemo}>
+            Demo
+          </Text>
         </View>
-        <Demo
-          height={this.props.windowHeight - 64}
-          width={Math.min(this.props.windowWidth, 600)}
-          gamePlan={this.state.demoGamePlan}
-        />
       </View>
     );
   }
@@ -125,7 +137,6 @@ export default class LevelInfo extends React.Component<Props, State> {
 const styles = StyleSheet.create({
   headerText: {
     textAlign: "center",
-    flex: 1,
     fontSize: 14,
     color: "black",
     fontWeight: "bold",
@@ -133,6 +144,14 @@ const styles = StyleSheet.create({
   playButton: {
     color: "green",
     fontSize: 24,
+    textAlign: "center",
+    padding: 10,
+  },
+  cancelButton: {
+    color: "red",
+    fontSize: 24,
+    textAlign: "center",
+    padding: 10,
   },
   practiceButton: {
     color: "orange",

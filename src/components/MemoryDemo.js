@@ -120,102 +120,97 @@ function getBorderColor(
   return "transparent";
 }
 
-export default class MemoryDemo extends React.Component<Props, State> {
-  render() {
-    const rowHeight = Math.min(
-      Math.floor(this.props.height / (this.props.gamePlan.nBack + 1)),
-      62
-    );
+export default function MemoryDemo(props: Props) {
+  const rowHeight = Math.min(
+    Math.floor(props.height / (props.gamePlan.nBack + 1)),
+    62
+  );
 
-    const grids = [];
+  const grids = [];
 
-    const currentStep = this.props.currentStep;
+  const currentStep = props.currentStep;
 
-    let colorArrowColor = getColor(
-      this.props.gamePlan.colors,
+  let colorArrowColor = getColor(
+    props.gamePlan.colors,
+    currentStep,
+    props.gamePlan.nBack
+  );
+  let positionArrowColor = getColor(
+    props.gamePlan.positions,
+    currentStep,
+    props.gamePlan.nBack
+  );
+
+  for (let index = 0; index < props.gamePlan.gameTurns; index++) {
+    const state = {
+      squares: squaresForTurn(props.gamePlan, index),
+    };
+    let colorArrowDisplay = getDisplay(
+      props.gamePlan.colors,
       currentStep,
-      this.props.gamePlan.nBack
+      props.gamePlan.nBack,
+      index
     );
-    let positionArrowColor = getColor(
-      this.props.gamePlan.positions,
+    let positionArrowDisplay = getDisplay(
+      props.gamePlan.positions,
       currentStep,
-      this.props.gamePlan.nBack
+      props.gamePlan.nBack,
+      index
     );
-
-    for (let index = 0; index < this.props.gamePlan.gameTurns; index++) {
-      const state = {
-        squares: squaresForTurn(this.props.gamePlan, index),
-      };
-      let colorArrowDisplay = getDisplay(
-        this.props.gamePlan.colors,
-        currentStep,
-        this.props.gamePlan.nBack,
-        index
-      );
-      let positionArrowDisplay = getDisplay(
-        this.props.gamePlan.positions,
-        currentStep,
-        this.props.gamePlan.nBack,
-        index
-      );
-      let opacity = getOpacity(currentStep, this.props.gamePlan.nBack, index);
-      let borderColor = getBorderColor(
-        currentStep,
-        this.props.gamePlan.nBack,
-        index
-      );
-      const heightStyle = { height: rowHeight };
-      grids.push(
-        <View
-          key={"demo-grid-" + index}
-          style={[styles.gridContainer, heightStyle]}
-        >
-          <View style={[styles.iconContainer, heightStyle]}>
-            <Ionicons
-              style={{ display: positionArrowDisplay }}
-              hidden={true}
-              name="md-arrow-dropright"
-              size={32}
-              color={positionArrowColor}
-            />
-          </View>
-          <View
+    let opacity = getOpacity(currentStep, props.gamePlan.nBack, index);
+    let borderColor = getBorderColor(currentStep, props.gamePlan.nBack, index);
+    const heightStyle = { height: rowHeight };
+    grids.push(
+      <View
+        key={"demo-grid-" + index}
+        style={[styles.gridContainer, heightStyle]}
+      >
+        <View style={[styles.iconContainer, heightStyle]}>
+          <Text
             style={{
-              height: rowHeight + 2,
-              opacity,
-              borderWidth: 2,
-              borderColor,
+              fontSize: 32,
+              display: positionArrowDisplay,
             }}
           >
-            <Grid
-              width={rowHeight}
-              height={rowHeight}
-              margin={4}
-              gamePlan={this.props.gamePlan}
-              gameState={state}
-            />
-          </View>
-          <View style={[styles.iconContainer, heightStyle]}>
-            <Ionicons
-              style={{ display: colorArrowDisplay }}
-              hidden={true}
-              name="md-arrow-dropleft"
-              size={32}
-              color={colorArrowColor}
-            />
-          </View>
+            👉
+          </Text>
         </View>
-      );
-    }
-
-    const positionText =
-      this.props.gamePlan.positions != null ? "position" : "";
-    const colorText = this.props.gamePlan.colors != null ? "color" : "";
-
-    return (
-      <ScrollView contentContainerStyle={styles.container}>{grids}</ScrollView>
+        <View
+          style={{
+            height: rowHeight + 2,
+            opacity,
+            borderWidth: 2,
+            borderColor,
+          }}
+        >
+          <Grid
+            width={rowHeight}
+            height={rowHeight}
+            margin={4}
+            gamePlan={props.gamePlan}
+            gameState={state}
+          />
+        </View>
+        <View style={[styles.iconContainer, heightStyle]}>
+          <Text
+            style={{
+              fontSize: 32,
+              display: positionArrowDisplay,
+            }}
+          >
+            👈
+          </Text>
+        </View>
+      </View>
     );
   }
+
+  const positionText = props.gamePlan.positions != null ? "position" : "";
+  const colorText = props.gamePlan.colors != null ? "color" : "";
+
+  return (
+    <ScrollView contentContainerStyle={styles.container}>{grids}</ScrollView>
+  );
 }
 
 const styles = StyleSheet.create({

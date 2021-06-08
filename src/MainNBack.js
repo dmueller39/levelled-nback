@@ -10,6 +10,13 @@ const POSITION_KEY = "mapNBack";
 const RESULTS_KEY = "results";
 const DEFAULT_NBACK_LEVEL = 1;
 
+function setBodyStyle() {
+  const body = document.body;
+  if (body != null) {
+    body.style = "background: #EEEEEE;";
+  }
+}
+
 export default function MainNBack() {
   const [position, setPosition] = useState(1);
   const [results, setResults] = useState(([]: GameResult[]));
@@ -27,6 +34,7 @@ export default function MainNBack() {
         }
       }
     }
+    setBodyStyle();
     loadAll();
   }, []);
   function storePosition(p: number) {

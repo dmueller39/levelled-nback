@@ -45,6 +45,7 @@ type State = {
 export type Props = {|
   isDebug: boolean,
   onCompleteGame: (?GameResult) => void,
+  onCancel: () => void,
   addBlurListener: (() => void) => () => void,
   location: ProgressMapLocation,
 |};
@@ -67,6 +68,10 @@ export default class GameLevel extends React.Component<Props, State> {
 
   componentDidMount = async () => {
     Dimensions.addEventListener("change", this._onDimensionsChange);
+  };
+
+  componentWillUnmount = async () => {
+    Dimensions.removeEventListener("change", this._onDimensionsChange);
   };
 
   _onStart = (gamePlan: GamePlan) => {
@@ -100,6 +105,7 @@ export default class GameLevel extends React.Component<Props, State> {
           windowWidth={this.state.windowWidth}
           windowHeight={this.state.windowHeight}
           onStart={this._onStart}
+          onCancel={this.props.onCancel}
         />
       );
     }

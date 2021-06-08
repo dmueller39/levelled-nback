@@ -46,12 +46,17 @@ export default function NBack(props: Props) {
       };
     };
 
+    const onCancel = () => {
+      setLocation(null);
+    };
+
     return (
       <GameLevel
         isDebug={props.isDebug}
         location={location}
         onCompleteGame={onCompleteGame}
         addBlurListener={addBlurListener}
+        onCancel={onCancel}
       />
     );
   }

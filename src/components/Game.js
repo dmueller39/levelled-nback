@@ -104,19 +104,23 @@ export default class Game extends React.Component<Props, State> {
 
   _unsubscribe: () => void = () => {};
 
+  _clearTimer = () => {
+    if (this._timer != null) {
+      clearInterval(this._timer);
+    }
+    this._timer = null;
+  };
+
   componentDidMount() {
     this._start();
     this._unsubscribe = this.props.addBlurListener(() => {
-      // do something
-      if (this._timer != null) {
-        clearInterval(this._timer);
-      }
-      this._timer = null;
+      this._clearTimer();
     });
   }
 
   componentWillUnmount() {
     this._unsubscribe();
+    this._clearTimer();
   }
 
   _timer: ?IntervalID;
