@@ -49,6 +49,7 @@ export default function MainNBack() {
         AsyncStorage.setItem(RESULTS_KEY, JSON.stringify(updated));
       }
       storeResults();
+      window.top.postMessage(window.location.href + " - complete", "*");
     }
   }
 
