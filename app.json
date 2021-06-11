@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Speed Reading Glimpse",
-    "slug": "custom-nback-task",
+    "name": "Levelled NBack",
+    "slug": "levelled-nback",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": ["ios", "android", "web"],

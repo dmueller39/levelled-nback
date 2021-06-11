@@ -20,7 +20,6 @@ import {
 import type { MasteryLevel, ProgressMapLocation } from "../progressMap";
 
 import Demo from "./Demo";
-import { Ionicons } from "@expo/vector-icons";
 import LocationButton from "./LocationButton";
 import { getGamePlan } from "../gameLogic";
 

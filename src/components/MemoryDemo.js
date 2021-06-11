@@ -29,7 +29,6 @@ import type {
   GameResult,
 } from "../gameLogic";
 import Grid from "./Grid";
-import { Ionicons } from "@expo/vector-icons";
 
 type State = {
   currentStep: number,

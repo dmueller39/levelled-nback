@@ -6,7 +6,6 @@ import type { GameResult, Settings } from "../gameLogic";
 import type { ProgressMapLocation } from "../progressMap";
 import { getProgressMap } from "../progressMap";
 
-import { Ionicons } from "@expo/vector-icons";
 import Map from "./Map";
 
 export type Props = {|

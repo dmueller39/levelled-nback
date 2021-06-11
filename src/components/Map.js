@@ -20,8 +20,6 @@ import type {
   ProgressMapDataItem,
 } from "../progressMap";
 
-import { Ionicons } from "@expo/vector-icons";
-
 const NBACK_MINIMUM = 1;
 const NBACK_MAXIMUM = 7;
 
