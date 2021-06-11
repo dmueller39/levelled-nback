@@ -1,7 +1,7 @@
 {
   "files": {
-    "app.js": "/levelled-nback/static/js/app.c2201281.chunk.js",
-    "app.js.map": "/levelled-nback/static/js/app.c2201281.chunk.js.map",
+    "app.js": "/levelled-nback/static/js/app.d2a0219d.chunk.js",
+    "app.js.map": "/levelled-nback/static/js/app.d2a0219d.chunk.js.map",
     "runtime~app.js": "/levelled-nback/static/js/runtime~app.31765fd3.js",
     "runtime~app.js.map": "/levelled-nback/static/js/runtime~app.31765fd3.js.map",
     "static/js/2.2fb2298c.chunk.js": "/levelled-nback/static/js/2.2fb2298c.chunk.js",
@@ -17,6 +17,6 @@
   "entrypoints": [
     "static/js/runtime~app.31765fd3.js",
     "static/js/2.2fb2298c.chunk.js",
-    "static/js/app.c2201281.chunk.js"
+    "static/js/app.d2a0219d.chunk.js"
   ]
 }

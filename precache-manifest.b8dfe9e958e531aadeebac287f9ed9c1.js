@@ -1,7 +1,7 @@
 self.__precacheManifest = [
   {
-    "revision": "821e9df7b303fcfe3c15",
-    "url": "/levelled-nback/static/js/app.c2201281.chunk.js"
+    "revision": "361953573c22731d9c81",
+    "url": "/levelled-nback/static/js/app.d2a0219d.chunk.js"
   },
   {
     "revision": "1e7a04d97356f6f30f00",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/levelled-nback/expo-service-worker.js"
   },
   {
-    "revision": "d9765105d8a14e8e5b504f01095435f9",
+    "revision": "2f0f05e5b64d6be08cda5813b6c70854",
     "url": "/levelled-nback/index.html"
   },
   {
