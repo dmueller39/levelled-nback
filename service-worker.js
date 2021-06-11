@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/levelled-nback/precache-manifest.cd05725a82180896b83be086a93e58ec.js"
+  "/levelled-nback/precache-manifest.8b2724d272963ec0b6c117e56542cc9b.js"
 );
 
 workbox.skipWaiting();
