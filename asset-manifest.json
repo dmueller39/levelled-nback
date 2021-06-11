@@ -1,0 +1,34 @@
+{
+  "files": {
+    "app.js": "/levelled-nback/static/js/app.41e2ccbe.chunk.js",
+    "app.js.map": "/levelled-nback/static/js/app.41e2ccbe.chunk.js.map",
+    "runtime~app.js": "/levelled-nback/static/js/runtime~app.31765fd3.js",
+    "runtime~app.js.map": "/levelled-nback/static/js/runtime~app.31765fd3.js.map",
+    "static/js/2.8953b877.chunk.js": "/levelled-nback/static/js/2.8953b877.chunk.js",
+    "static/js/2.8953b877.chunk.js.map": "/levelled-nback/static/js/2.8953b877.chunk.js.map",
+    "fonts/AntDesign.ttf": "/levelled-nback/./fonts/AntDesign.ttf",
+    "fonts/Entypo.ttf": "/levelled-nback/./fonts/Entypo.ttf",
+    "fonts/Feather.ttf": "/levelled-nback/./fonts/Feather.ttf",
+    "fonts/FontAwesome.ttf": "/levelled-nback/./fonts/FontAwesome.ttf",
+    "fonts/FontAwesome5_Brands.ttf": "/levelled-nback/./fonts/FontAwesome5_Brands.ttf",
+    "fonts/FontAwesome5_Solid.ttf": "/levelled-nback/./fonts/FontAwesome5_Solid.ttf",
+    "fonts/Fontisto.ttf": "/levelled-nback/./fonts/Fontisto.ttf",
+    "fonts/Foundation.ttf": "/levelled-nback/./fonts/Foundation.ttf",
+    "fonts/Ionicons.ttf": "/levelled-nback/./fonts/Ionicons.ttf",
+    "fonts/MaterialCommunityIcons.ttf": "/levelled-nback/./fonts/MaterialCommunityIcons.ttf",
+    "fonts/MaterialIcons.ttf": "/levelled-nback/./fonts/MaterialIcons.ttf",
+    "fonts/SimpleLineIcons.ttf": "/levelled-nback/./fonts/SimpleLineIcons.ttf",
+    "favicon-16.png": "/levelled-nback/favicon-16.png",
+    "favicon-32.png": "/levelled-nback/favicon-32.png",
+    "favicon.ico": "/levelled-nback/favicon.ico",
+    "index.html": "/levelled-nback/index.html",
+    "manifest.json": "/levelled-nback/manifest.json",
+    "serve.json": "/levelled-nback/serve.json",
+    "static/js/2.8953b877.chunk.js.LICENSE.txt": "/levelled-nback/static/js/2.8953b877.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime~app.31765fd3.js",
+    "static/js/2.8953b877.chunk.js",
+    "static/js/app.41e2ccbe.chunk.js"
+  ]
+}
