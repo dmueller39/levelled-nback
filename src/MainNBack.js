@@ -24,18 +24,33 @@ export default function MainNBack() {
     async function loadAll() {
       const pval = await AsyncStorage.getItem(POSITION_KEY);
       setPosition(parseInt(pval) || DEFAULT_NBACK_LEVEL);
-      const rval = await AsyncStorage.getItem(RESULTS_KEY);
-      if (rval != null) {
-        try {
-          const res = JSON.parse(rval) || [];
-          setResults(res);
-        } catch (e) {
-          // no worries
-        }
-      }
+      // const rval = await AsyncStorage.getItem(RESULTS_KEY);
+      // if (rval != null) {
+      //   try {
+      //     const res = JSON.parse(rval) || [];
+      //     setResults(res);
+      //   } catch (e) {
+      //     // no worries
+      //   }
+      // }
     }
     setBodyStyle();
     loadAll();
+
+    window.onmessage = function(e) {
+      if (typeof e.data === "string") {
+        //
+        if (e.data.startsWith(window.location.href + ";data;")) {
+          // extract the data string
+          const res = e.data
+            .split(";")
+            .slice(2)
+            .map((data) => JSON.parse(data));
+          setResults(res);
+        }
+      }
+    };
+    window.top.postMessage(window.location.href + ";ready", "*");
   }, []);
   function storePosition(p: number) {
     setPosition(p);
@@ -49,7 +64,9 @@ export default function MainNBack() {
         AsyncStorage.setItem(RESULTS_KEY, JSON.stringify(updated));
       }
       storeResults();
-      window.top.postMessage(window.location.href + " - complete", "*");
+      const message =
+        window.location.href + ";complete;" + JSON.stringify(result);
+      window.top.postMessage(message, "*");
     }
   }
 
