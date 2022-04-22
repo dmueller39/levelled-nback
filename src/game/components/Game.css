@@ -1,0 +1,33 @@
+buttonContainer {
+  flex-direction: "row";
+  justify-content: "space-evenly";
+}
+buttonText {
+  justify-content: "center";
+  color: "white";
+  padding: 10;
+  font-size: 24;
+}
+debugText {
+  position: "absolute";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-size: 10;
+  pointer-events: none;
+}
+container {
+  flex: 1;
+  align-items: "center";
+  padding: 8;
+}
+inputContainer {
+  align-items: "center";
+}
+disabledInputKey {
+  color: "#888888";
+}
+inputKey {
+  color: "#111111";
+}
