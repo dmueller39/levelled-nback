@@ -1,22 +1,15 @@
 {
   "files": {
-    "app.js": "/levelled-nback/static/js/app.dc3545f5.chunk.js",
-    "app.js.map": "/levelled-nback/static/js/app.dc3545f5.chunk.js.map",
-    "runtime~app.js": "/levelled-nback/static/js/runtime~app.31765fd3.js",
-    "runtime~app.js.map": "/levelled-nback/static/js/runtime~app.31765fd3.js.map",
-    "static/js/2.7d16ed40.chunk.js": "/levelled-nback/static/js/2.7d16ed40.chunk.js",
-    "static/js/2.7d16ed40.chunk.js.map": "/levelled-nback/static/js/2.7d16ed40.chunk.js.map",
-    "favicon-16.png": "/levelled-nback/favicon-16.png",
-    "favicon-32.png": "/levelled-nback/favicon-32.png",
-    "favicon.ico": "/levelled-nback/favicon.ico",
+    "main.css": "/levelled-nback/static/css/main.417cbdc1.css",
+    "main.js": "/levelled-nback/static/js/main.a327d2a7.js",
+    "static/js/787.3f992f47.chunk.js": "/levelled-nback/static/js/787.3f992f47.chunk.js",
     "index.html": "/levelled-nback/index.html",
-    "manifest.json": "/levelled-nback/manifest.json",
-    "serve.json": "/levelled-nback/serve.json",
-    "static/js/2.7d16ed40.chunk.js.LICENSE.txt": "/levelled-nback/static/js/2.7d16ed40.chunk.js.LICENSE.txt"
+    "main.417cbdc1.css.map": "/levelled-nback/static/css/main.417cbdc1.css.map",
+    "main.a327d2a7.js.map": "/levelled-nback/static/js/main.a327d2a7.js.map",
+    "787.3f992f47.chunk.js.map": "/levelled-nback/static/js/787.3f992f47.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/runtime~app.31765fd3.js",
-    "static/js/2.7d16ed40.chunk.js",
-    "static/js/app.dc3545f5.chunk.js"
+    "static/css/main.417cbdc1.css",
+    "static/js/main.a327d2a7.js"
   ]
 }
