@@ -29,54 +29,9 @@ function getFill(masteryLevel: MasteryLevel): string {
 }
 
 const LocationButton = (props: Props) => {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-
-  const draw = (ctx: CanvasRenderingContext2D) => {
-    const fill1 = getFill(props.last3MasteryLevels[0]);
-    const fill2 = getFill(props.last3MasteryLevels[1]);
-    const fill3 = getFill(props.last3MasteryLevels[2]);
-    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    ctx.beginPath();
-    ctx.arc(22, 22, 14, 0, 2 * Math.PI, false);
-    ctx.fillStyle = fill1;
-    ctx.fill();
-    ctx.lineWidth = 1;
-    ctx.strokeStyle = "#000000";
-    ctx.stroke();
-
-    ctx.beginPath();
-    ctx.arc(22, 22, 9, 0, 2 * Math.PI, false);
-    ctx.fillStyle = fill2;
-    ctx.fill();
-
-    ctx.beginPath();
-    ctx.arc(22, 22, 4, 0, 2 * Math.PI, false);
-    ctx.fillStyle = fill3;
-    ctx.fill();
-  };
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (canvas instanceof HTMLCanvasElement) {
-      const context = canvas.getContext("2d");
-      if (context instanceof CanvasRenderingContext2D) {
-        draw(context);
-      }
-    }
-  }, [draw, props.last3MasteryLevels]);
-
-  const ref = useRef(null);
-  const setRef = useCallback((node: null | HTMLCanvasElement) => {
-    if (node instanceof HTMLCanvasElement) {
-      const context = node.getContext("2d");
-      if (context instanceof CanvasRenderingContext2D) {
-        context.scale(window.devicePixelRatio, window.devicePixelRatio);
-      }
-    }
-
-    // Save a reference to the node
-    canvasRef.current = node;
-  }, []);
+  const fill1 = getFill(props.last3MasteryLevels[0]);
+  const fill2 = getFill(props.last3MasteryLevels[1]);
+  const fill3 = getFill(props.last3MasteryLevels[2]);
 
   return (
     <div
@@ -96,12 +51,18 @@ const LocationButton = (props: Props) => {
         onClick={props.onPress}
         className="touchableOpacity"
       >
-        <canvas
-          height={44 * window.devicePixelRatio}
-          width={44 * window.devicePixelRatio}
-          style={{ width: 44, height: 44 }}
-          ref={setRef}
-        />
+        <svg height="44" width="44">
+          <circle
+            cx="22"
+            cy="22"
+            r="14"
+            fill={fill1}
+            stroke="black"
+            stroke-width="1"
+          ></circle>
+          <circle cx="22" cy="22" r="9" fill={fill2}></circle>
+          <circle cx="22" cy="22" r="4" fill={fill3}></circle>
+        </svg>
       </div>
     </div>
   );
