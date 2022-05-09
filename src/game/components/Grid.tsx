@@ -59,7 +59,6 @@ export default class NBackGrid extends React.Component<Props, State> {
           height: this.props.height,
           margin: "auto",
           position: "relative",
-          backgroundColor: "black",
         }}
       >
         {views}

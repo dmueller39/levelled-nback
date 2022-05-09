@@ -96,9 +96,9 @@ export default function MemoryDemo(props: Props) {
     grids.push(
       <div
         key={"demo-grid-" + index}
-        style={[styles.gridContainer, heightStyle]}
+        style={{ ...styles.gridContainer, ...heightStyle }}
       >
-        <div style={[styles.iconContainer, heightStyle]}>
+        <div style={{ ...styles.iconContainer, ...heightStyle }}>
           <div
             style={{
               fontSize: 32,
@@ -124,7 +124,7 @@ export default function MemoryDemo(props: Props) {
             gameState={state}
           />
         </div>
-        <div style={[styles.iconContainer, heightStyle]}>
+        <div style={{ ...styles.iconContainer, ...heightStyle }}>
           <div
             style={{
               fontSize: 32,
@@ -138,7 +138,7 @@ export default function MemoryDemo(props: Props) {
     );
   }
 
-  return <div contentContainerStyle={styles.container}>{grids}</div>;
+  return <div style={styles.container}>{grids}</div>;
 }
 
 const styles = {

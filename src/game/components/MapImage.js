@@ -11,8 +11,6 @@ import type {
 type Props = {
   onPressLocation: (ProgressMapLocation) => void,
   progressMap: ProgressMapData,
-  windowHeight: number,
-  windowWidth: number,
   backgroundColor: string,
 };
 

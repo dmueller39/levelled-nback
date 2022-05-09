@@ -232,7 +232,15 @@ export default class GameDemo extends React.Component<Props, State> {
     }
 
     return (
-      <div className="container" style={{ width: this.props.width }}>
+      <div
+        className="container"
+        style={{
+          flexDirection: "row",
+          display: "flex",
+          width: this.props.width,
+          margin: "auto",
+        }}
+      >
         <div className="gameContainer" style={{ width: halfWidth }}>
           <MemoryDemo
             height={this.props.height - 2 * 8}

@@ -31,8 +31,6 @@ type State = {
 type Props = {
   gamePlan: GamePlan;
   isDebug: boolean;
-  windowWidth: number;
-  windowHeight: number;
   onCompleteGame: (result: GameResult | null) => void;
   addBlurListener: (callback: () => void) => () => void;
 };
@@ -250,30 +248,16 @@ export default class Game extends React.Component<Props, State> {
       buttons.push(colorButton);
     }
 
-    const dimension = Math.min(
-      this.props.windowHeight - 200,
-      this.props.windowWidth
-    );
-
     return (
-      <div
-        className="container"
-        style={{
-          width: this.props.windowWidth,
-          height: this.props.windowHeight,
-        }}
-      >
+      <div className="container" style={{ width: "100%" }}>
         <Grid
-          width={dimension}
-          height={dimension}
+          width={300}
+          height={300}
           margin={Margin}
           gamePlan={this.props.gamePlan}
           gameState={this.state.gameState}
         />
-        <div
-          className="buttonContainer"
-          style={{ width: this.props.windowWidth }}
-        >
+        <div className="buttonContainer" style={{ width: "100%" }}>
           {buttons}
         </div>
         {this.props.isDebug ? (

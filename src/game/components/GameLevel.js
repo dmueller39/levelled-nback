@@ -8,8 +8,6 @@ import type { ProgressMapLocation } from "../progressMap";
 type State = {
   isPlaying: boolean,
   gamePlan?: GamePlan,
-  windowWidth: number,
-  windowHeight: number,
 };
 
 export type Props = {|
@@ -23,8 +21,6 @@ export type Props = {|
 export default class GameLevel extends React.Component<Props, State> {
   state = {
     isPlaying: false,
-    windowHeight: 400,
-    windowWidth: 300,
   };
 
   _onStart = (gamePlan: GamePlan) => {
@@ -44,8 +40,6 @@ export default class GameLevel extends React.Component<Props, State> {
         <Game
           gamePlan={this.state.gamePlan}
           isDebug={this.props.isDebug}
-          windowWidth={this.state.windowWidth}
-          windowHeight={this.state.windowHeight}
           onCompleteGame={this._onCompleteGame}
           addBlurListener={this.props.addBlurListener}
         />
@@ -55,8 +49,6 @@ export default class GameLevel extends React.Component<Props, State> {
         <LevelInfo
           location={this.props.location}
           isDebug={this.props.isDebug}
-          windowWidth={this.state.windowWidth}
-          windowHeight={this.state.windowHeight}
           onStart={this._onStart}
           onCancel={this.props.onCancel}
         />

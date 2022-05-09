@@ -6,11 +6,10 @@ import type { ProgressMapLocation } from "../progressMap";
 
 import Demo from "./Demo";
 import { getGamePlan } from "../gameLogic";
+import "./TouchableOpacity.css";
 
 type Props = {
   location: ProgressMapLocation,
-  windowWidth: number,
-  windowHeight: number,
   onStart: (GamePlan) => void,
   onCancel: () => void,
 };
@@ -51,51 +50,47 @@ export default class LevelInfo extends React.Component<Props, State> {
   render() {
     if (this.state.isDemo) {
       return (
-        <div
-          style={[
-            {
-              width: this.props.windowWidth,
-              height: this.props.windowHeight,
-            },
-            styles.container,
-          ]}
-        >
+        <div style={styles.container}>
           <div style={styles.hContainer}>
-            <div style={styles.cancelButton} onPress={this._onCancel}>
+            <div
+              style={styles.cancelButton}
+              className="touchableOpacity"
+              onClick={this._onCancel}
+            >
               Cancel
             </div>
-            <div style={styles.playButton} onPress={this._onStart}>
+            <div
+              style={styles.playButton}
+              className="touchableOpacity"
+              onClick={this._onStart}
+            >
               Start
             </div>
           </div>
-          <Demo
-            height={this.props.windowHeight - 64}
-            width={Math.min(this.props.windowWidth, 600)}
-            gamePlan={this.state.demoGamePlan}
-          />
+          <Demo height={400} width={300} gamePlan={this.state.demoGamePlan} />
         </div>
       );
     }
 
     return (
-      <div
-        style={[
-          {
-            width: this.props.windowWidth,
-            height: this.props.windowHeight,
-          },
-          styles.container,
-        ]}
-      >
+      <div style={styles.container}>
         <div style={styles.hContainer}>
-          <div style={styles.cancelButton} onPress={this._onCancel}>
+          <div
+            style={styles.cancelButton}
+            className="touchableOpacity"
+            onClick={this._onCancel}
+          >
             Cancel
           </div>
-          <div style={styles.playButton} onPress={this._onStart}>
+          <div
+            style={styles.playButton}
+            className="touchableOpacity"
+            onClick={this._onStart}
+          >
             Start
           </div>
         </div>
-        <div style={{ flex: 1, justifyContent: "center" }}>
+        <div style={{ minHeight: 300, flex: 1, justifyContent: "center" }}>
           <div style={styles.headerText}>
             {this.state.demoGamePlan.positions != null &&
             this.state.demoGamePlan.colors != null
@@ -106,8 +101,10 @@ export default class LevelInfo extends React.Component<Props, State> {
               this.state.demoGamePlan.nBack}{" "}
             Turns
           </div>
-          <div style={styles.playButton} onPress={this._onDemo}>
-            Demo
+          <div style={styles.playButton}>
+            <span onClick={this._onDemo} className="touchableOpacity">
+              Demo
+            </span>
           </div>
         </div>
       </div>
@@ -121,6 +118,7 @@ const styles = {
     fontSize: 14,
     color: "black",
     fontWeight: "bold",
+    whiteSpace: "pre-wrap",
   },
   playButton: {
     color: "green",
@@ -156,6 +154,7 @@ const styles = {
   hContainer: {
     justifyContent: "center",
     flexDirection: "row",
+    display: "flex",
   },
   hspacer: {
     flex: 1,
