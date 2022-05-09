@@ -185,12 +185,12 @@ export default class GameDemo extends React.Component<Props, State> {
       return (
         <div
           key={name}
-          className="buttonText"
           style={{
             backgroundColor: buttonColor,
             width: 0.3 * width,
             fontSize: width * 0.07,
           }}
+          className="buttonText"
         >
           {name}
         </div>

@@ -1,0 +1,7 @@
+.demo-panel {
+  height: 80vh;
+  flex: 1 1 0%;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}

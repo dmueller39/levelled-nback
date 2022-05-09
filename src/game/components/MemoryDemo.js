@@ -157,8 +157,9 @@ const styles = {
     width: 80,
     alignItems: "center",
     justifyContent: "center",
+    display: "flex",
   },
-  gridContainer: { height: 62, flexDirection: "row" },
+  gridContainer: { height: 62, flexDirection: "row", display: "flex" },
   container: {
     alignItems: "center",
     flex: 1,

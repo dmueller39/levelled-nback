@@ -7,6 +7,7 @@ import type { ProgressMapLocation } from "../progressMap";
 import Demo from "./Demo";
 import { getGamePlan } from "../gameLogic";
 import "./TouchableOpacity.css";
+import "./LevelInfo.css";
 
 type Props = {
   location: ProgressMapLocation,
@@ -90,7 +91,7 @@ export default class LevelInfo extends React.Component<Props, State> {
             Start
           </div>
         </div>
-        <div style={{ minHeight: 300, flex: 1, justifyContent: "center" }}>
+        <div className="demo-panel">
           <div style={styles.headerText}>
             {this.state.demoGamePlan.positions != null &&
             this.state.demoGamePlan.colors != null
