@@ -110,6 +110,7 @@ export default class Game extends React.Component<Props, State> {
     this._start();
     this._unsubscribe = this.props.addBlurListener(() => {
       this._clearTimer();
+      this.props.onCompleteGame(null);
     });
   }
 
@@ -127,11 +128,6 @@ export default class Game extends React.Component<Props, State> {
       startTime: Date.now(),
     });
   }
-
-  _endGame = (result: GameResult | null) => {
-    this.props.onCompleteGame(result);
-    return DefaultState;
-  };
 
   _onPressPosition: () => void = () => {
     const currentIndex = getCurrentIndex(
@@ -162,11 +158,7 @@ export default class Game extends React.Component<Props, State> {
   };
 
   _tick = () => {
-    this.setState(this._updateState);
-  };
-
-  _updateState = (state: State) => {
-    if (state.gameState.isRunning) {
+    if (this.state.gameState.isRunning) {
       const currentIndex = getCurrentIndex(
         this.props.gamePlan,
         this.state.startTime,
@@ -179,18 +171,19 @@ export default class Game extends React.Component<Props, State> {
       );
       if (gameState.isRunning === false) {
         // reset the game
-        return this._endGame({
+        this.setState(DefaultState);
+        this.props.onCompleteGame({
           mistakes: gameState.mistakes,
           time: Date.now(),
           gamePlan: this.props.gamePlan,
         });
       } else {
-        return {
+        this.setState({
+          ...this.state,
           gameState,
-        };
+        });
       }
     }
-    return state;
   };
 
   _renderButton(
