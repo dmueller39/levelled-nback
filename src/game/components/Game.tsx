@@ -20,6 +20,7 @@ import type {
 import Grid from "./Grid";
 import WebKeyboardListener from "../common/WebKeyboardListener";
 import "./TouchableOpacity.css";
+import "./Game.css";
 
 const Margin = 10;
 
@@ -49,18 +50,21 @@ function InputElement({
   inputKey: string;
 }) {
   return (
-    <div className="inputContainer">
+    <div className="GameInputContainer">
       <div
         key={name}
         onClick={disabled ? () => {} : callback}
         className="touchableOpacity"
       >
-        <div className="buttonText" style={{ backgroundColor: buttonColor }}>
+        <div
+          className="GameButtonText"
+          style={{ backgroundColor: buttonColor }}
+        >
           {name}
         </div>
       </div>
       <WebKeyboardListener inputKey={inputKey} onKeyPress={callback}>
-        <div className={disabled ? "disabledInputKey" : "inputKey"}>
+        <div className={disabled ? "GameDisabledInputKey" : "GameInputKey"}>
           ({inputKey})
         </div>
       </WebKeyboardListener>
@@ -249,7 +253,7 @@ export default class Game extends React.Component<Props, State> {
     }
 
     return (
-      <div className="container" style={{ width: "100%" }}>
+      <div className="GameContainer" style={{ width: "100%" }}>
         <Grid
           width={300}
           height={300}
@@ -257,7 +261,7 @@ export default class Game extends React.Component<Props, State> {
           gamePlan={this.props.gamePlan}
           gameState={this.state.gameState}
         />
-        <div className="buttonContainer" style={{ width: "100%" }}>
+        <div className="GameButtonContainer" style={{ width: "100%" }}>
           {buttons}
         </div>
         {this.props.isDebug ? (

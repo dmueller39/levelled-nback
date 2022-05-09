@@ -190,7 +190,7 @@ export default class GameDemo extends React.Component<Props, State> {
             width: 0.3 * width,
             fontSize: width * 0.07,
           }}
-          className="buttonText"
+          className="DemoButtonText"
         >
           {name}
         </div>
@@ -233,7 +233,7 @@ export default class GameDemo extends React.Component<Props, State> {
 
     return (
       <div
-        className="container"
+        className="DemoContainer"
         style={{
           flexDirection: "row",
           display: "flex",
@@ -257,7 +257,7 @@ export default class GameDemo extends React.Component<Props, State> {
             gamePlan={this.props.gamePlan}
             gameState={this.state.gameState}
           />
-          <div className="buttonContainer">{buttons}</div>
+          <div className="DemoButtonContainer">{buttons}</div>
         </div>
       </div>
     );

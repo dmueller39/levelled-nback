@@ -1,9 +1,9 @@
-.buttonContainer {
+.DemoButtonContainer {
   flex-direction: row;
   justify-content: space-evenly;
   display: flex;
 }
-.buttonText {
+.DemoButtonText {
   justify-content: center;
   color: white;
   text-align: center;
@@ -11,7 +11,7 @@
   padding-bottom: 3px;
   margin: 1px;
 }
-.container {
+.DemoContainer {
   flex: 1;
   flex-direction: row;
   justify-content: center;
