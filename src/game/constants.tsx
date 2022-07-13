@@ -1,5 +1,8 @@
 // @flow
 
+export const INACTIVE_COLOR = "#EEEEEE";
+export const ACTIVE_COLOR = "grey";
+
 export const DEFAULT_SETTINGS: Settings = {
   nBack: 2,
   rows: 3,
@@ -25,26 +28,26 @@ export const DEFAULT_SETTINGS: Settings = {
 };
 
 export type Settings = {
-  nBack: number,
-  rows: number,
-  columns: number,
-  turns: number,
-  positionsEnabled: boolean,
-  colorsEnabled: boolean,
-  colorValues: string[],
-  onDuration: number,
-  offDuration: number,
-  debugEnabled?: boolean,
+  nBack: number;
+  rows: number;
+  columns: number;
+  turns: number;
+  positionsEnabled: boolean;
+  colorsEnabled: boolean;
+  colorValues: string[];
+  onDuration: number;
+  offDuration: number;
+  debugEnabled?: boolean;
   progressMap: {
-    offset: number,
-    spacing: number,
-    minTurns: number,
-    maxTurns: number,
-    minTurnsPerMinute: number,
-    maxTurnsPerMinute: number,
-    steps: number,
-    minNBack: number,
-    maxNBack: number,
-  },
-  weeklyGoal: number,
+    offset: number;
+    spacing: number;
+    minTurns: number;
+    maxTurns: number;
+    minTurnsPerMinute: number;
+    maxTurnsPerMinute: number;
+    steps: number;
+    minNBack: number;
+    maxNBack: number;
+  };
+  weeklyGoal: number;
 };

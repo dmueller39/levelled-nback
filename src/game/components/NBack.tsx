@@ -2,27 +2,26 @@
 import React, { useState } from "react";
 import GameLevel from "./GameLevel";
 import Menu from "./Menu";
-import type { GameResult, GamePlan, Settings } from "../gameLogic";
+import type { GameResult, Settings } from "../gameLogic";
 import type { ProgressMapLocation } from "../progressMap";
 
-export type StateProps = {|
-  settings: ?Settings,
-  results: GameResult[],
-  position: number,
-  isDebug: boolean,
-|};
+export type StateProps = {
+  settings: Settings | null;
+  results: GameResult[];
+  position: number;
+};
 
-export type DispatchProps = {|
-  onCompleteGame: (?GameResult) => void,
-  storePosition: (number) => void,
-|};
+export type DispatchProps = {
+  onCompleteGame: (result: GameResult | null) => void;
+  storePosition: (position: number) => void;
+};
 
-export type OwnProps = {||};
+export type OwnProps = {};
 
-export type Props = {| ...StateProps, ...DispatchProps, ...OwnProps |};
+export type Props = StateProps & DispatchProps & OwnProps;
 
 export default function NBack(props: Props) {
-  const [location, setLocation] = useState((null: ?ProgressMapLocation));
+  const [location, setLocation] = useState<ProgressMapLocation | null>(null);
   if (location == null) {
     return (
       <Menu
@@ -34,7 +33,7 @@ export default function NBack(props: Props) {
       />
     );
   } else {
-    const onCompleteGame = (result: ?GameResult) => {
+    const onCompleteGame = (result: GameResult | null) => {
       setLocation(null);
       props.onCompleteGame(result);
     };
@@ -52,7 +51,6 @@ export default function NBack(props: Props) {
 
     return (
       <GameLevel
-        isDebug={props.isDebug}
         location={location}
         onCompleteGame={onCompleteGame}
         addBlurListener={addBlurListener}

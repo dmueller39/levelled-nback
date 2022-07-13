@@ -11,11 +11,11 @@ const NBACK_MINIMUM = 1;
 const NBACK_MAXIMUM = 7;
 
 type Props = {
-  onPressLocation: (ProgressMapLocation) => void,
-  onUpdateNBack: (number) => void,
-  results: GameResult[],
-  settings: Settings,
-  nBack: number,
+  onPressLocation: (location: ProgressMapLocation) => void;
+  onUpdateNBack: (nback: number) => void;
+  results: GameResult[];
+  settings: Settings;
+  nBack: number;
 };
 
 function getBGFill(nBack: number): string {
@@ -57,7 +57,6 @@ export default class Menu extends React.Component<Props, State> {
     const color = disabled ? "grey" : "black";
     return (
       <div
-        disabled={disabled}
         style={{
           flex: 1,
           flexDirection: "row",
@@ -159,7 +158,7 @@ export default class Menu extends React.Component<Props, State> {
     ).filter((item: ProgressMapDataItem) => {
       return (
         item.locations.filter(
-          (location: ?ProgressMapLocation) =>
+          (location: ProgressMapLocation | null) =>
             location != null && location.gameLevel.nBack === this.props.nBack
         ).length > 0
       );

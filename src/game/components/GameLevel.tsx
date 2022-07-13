@@ -6,21 +6,21 @@ import LevelInfo from "./LevelInfo";
 import type { ProgressMapLocation } from "../progressMap";
 
 type State = {
-  isPlaying: boolean,
-  gamePlan?: GamePlan,
+  isPlaying: boolean;
+  gamePlan: GamePlan | null;
 };
 
-export type Props = {|
-  isDebug: boolean,
-  onCompleteGame: (?GameResult) => void,
-  onCancel: () => void,
-  addBlurListener: (() => void) => () => void,
-  location: ProgressMapLocation,
-|};
+export type Props = {
+  onCompleteGame: (result: GameResult | null) => void;
+  onCancel: () => void;
+  addBlurListener: (callback: () => void) => () => void;
+  location: ProgressMapLocation;
+};
 
 export default class GameLevel extends React.Component<Props, State> {
   state = {
     isPlaying: false,
+    gamePlan: null,
   };
 
   _onStart = (gamePlan: GamePlan) => {
@@ -30,7 +30,7 @@ export default class GameLevel extends React.Component<Props, State> {
     });
   };
 
-  _onCompleteGame = (result: ?GameResult) => {
+  _onCompleteGame = (result: GameResult | null) => {
     this.props.onCompleteGame(result);
   };
 
@@ -39,7 +39,6 @@ export default class GameLevel extends React.Component<Props, State> {
       return (
         <Game
           gamePlan={this.state.gamePlan}
-          isDebug={this.props.isDebug}
           onCompleteGame={this._onCompleteGame}
           addBlurListener={this.props.addBlurListener}
         />
@@ -48,7 +47,6 @@ export default class GameLevel extends React.Component<Props, State> {
       return (
         <LevelInfo
           location={this.props.location}
-          isDebug={this.props.isDebug}
           onStart={this._onStart}
           onCancel={this.props.onCancel}
         />

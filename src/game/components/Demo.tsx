@@ -16,6 +16,7 @@ import type { ButtonState, GamePlan, GameState } from "../gameLogic";
 import Grid from "./Grid";
 import MemoryDemo from "./MemoryDemo";
 import "./Demo.css";
+import { INACTIVE_COLOR } from "../constants";
 
 type State = {
   gameState: GameState;
@@ -34,15 +35,15 @@ const DefaultState = {
     positionButtonState: HIDDEN,
     colorButtonState: HIDDEN,
     squares: [
-      "white",
-      "white",
-      "white",
-      "white",
-      "white",
-      "white",
-      "white",
-      "white",
-      "white",
+      INACTIVE_COLOR,
+      INACTIVE_COLOR,
+      INACTIVE_COLOR,
+      INACTIVE_COLOR,
+      INACTIVE_COLOR,
+      INACTIVE_COLOR,
+      INACTIVE_COLOR,
+      INACTIVE_COLOR,
+      INACTIVE_COLOR,
     ],
     currentIndex: -1,
     mistakes: 0,
@@ -152,9 +153,7 @@ export default class GameDemo extends React.Component<Props, State> {
         // reset the game
         return this._endGame();
       } else {
-        return {
-          gameState,
-        };
+        return { ...state, gameState };
       }
     }
     return state;

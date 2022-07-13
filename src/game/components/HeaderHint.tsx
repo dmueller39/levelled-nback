@@ -3,15 +3,16 @@ import * as React from "react";
 import shuffle from "../common/shuffle";
 import Grid from "./Grid";
 import type { Settings } from "../gameLogic";
+import { INACTIVE_COLOR, ACTIVE_COLOR } from "../constants";
 
 type Props = {
-  nBack: number,
-  colorsEnabled?: boolean,
-  positionsEnabled?: boolean,
-  settings: Settings,
+  nBack: number;
+  colorsEnabled?: boolean;
+  positionsEnabled?: boolean;
+  settings: Settings;
 };
 
-type State = { colors: Array<string>, positions: Array<number> };
+type State = { colors: Array<string>; positions: Array<number> };
 
 const POSITIONS: Array<number> = [0, 5, 6, 1, 4, 3, 2, 8, 7];
 
@@ -47,10 +48,10 @@ export default class HeaderHint extends React.Component<Props, State> {
       ? isLast
         ? this.state.colors[0]
         : this.state.colors[step]
-      : "grey";
+      : ACTIVE_COLOR;
     const result = [];
     for (let i = 0; i < 9; i++) {
-      result.push("white");
+      result.push(INACTIVE_COLOR);
     }
     result[index] = color;
     return result;

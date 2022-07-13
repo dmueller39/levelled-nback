@@ -1,6 +1,7 @@
 // @flow
 
 import shuffle from "./common/shuffle";
+import { ACTIVE_COLOR, INACTIVE_COLOR } from "./constants";
 
 export const HIDDEN: ButtonState = 0;
 export const DISABLED: ButtonState = 1;
@@ -101,7 +102,7 @@ export type GameState = {
 function getEmptyStateSquares(gamePlan: GamePlan): string[] {
   const result = [];
   for (let i = 0; i < gamePlan.rows * gamePlan.columns; i++) {
-    result.push("white");
+    result.push(INACTIVE_COLOR);
   }
   return result;
 }
@@ -282,7 +283,7 @@ export function getGameStateOnTick(
       const colorIndex = colors[gameIndex];
       squares[squareIndex] = colorValues[colorIndex];
     } else {
-      squares[squareIndex] = "grey";
+      squares[squareIndex] = ACTIVE_COLOR;
     }
   }
 

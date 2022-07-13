@@ -10,12 +10,12 @@ import "./TouchableOpacity.css";
 import "./LevelInfo.css";
 
 type Props = {
-  location: ProgressMapLocation,
-  onStart: (GamePlan) => void,
-  onCancel: () => void,
+  location: ProgressMapLocation;
+  onStart: (gamePlan: GamePlan) => void;
+  onCancel: () => void;
 };
 
-type State = { demoGamePlan: GamePlan, isDemo: boolean };
+type State = { demoGamePlan: GamePlan; isDemo: boolean };
 
 export default class LevelInfo extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -113,7 +113,7 @@ export default class LevelInfo extends React.Component<Props, State> {
   }
 }
 
-const styles = {
+const styles: { [key: string]: React.CSSProperties } = {
   headerText: {
     textAlign: "center",
     fontSize: 14,

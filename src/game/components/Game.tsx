@@ -21,6 +21,7 @@ import Grid from "./Grid";
 import WebKeyboardListener from "../common/WebKeyboardListener";
 import "./TouchableOpacity.css";
 import "./Game.css";
+import { INACTIVE_COLOR } from "../constants";
 
 const Margin = 10;
 
@@ -31,7 +32,6 @@ type State = {
 
 type Props = {
   gamePlan: GamePlan;
-  isDebug: boolean;
   onCompleteGame: (result: GameResult | null) => void;
   addBlurListener: (callback: () => void) => () => void;
 };
@@ -78,15 +78,15 @@ const DefaultState = {
     positionButtonState: HIDDEN,
     colorButtonState: HIDDEN,
     squares: [
-      "white",
-      "white",
-      "white",
-      "white",
-      "white",
-      "white",
-      "white",
-      "white",
-      "white",
+      INACTIVE_COLOR,
+      INACTIVE_COLOR,
+      INACTIVE_COLOR,
+      INACTIVE_COLOR,
+      INACTIVE_COLOR,
+      INACTIVE_COLOR,
+      INACTIVE_COLOR,
+      INACTIVE_COLOR,
+      INACTIVE_COLOR,
     ],
     currentIndex: -1,
     mistakes: 0,
@@ -257,14 +257,6 @@ export default class Game extends React.Component<Props, State> {
         <div className="GameButtonContainer" style={{ width: "100%" }}>
           {buttons}
         </div>
-        {this.props.isDebug ? (
-          <div className="debugText">
-            <div className="debugText">
-              {JSON.stringify(this.state.gameState, null, "\t")}
-              {JSON.stringify(this.props.gamePlan, null, "\t")}
-            </div>
-          </div>
-        ) : null}
       </div>
     );
   }

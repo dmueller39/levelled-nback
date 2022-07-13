@@ -60,7 +60,6 @@ export default function MainNBack() {
 
   return (
     <NBack
-      isDebug={false}
       settings={DEFAULT_SETTINGS}
       onCompleteGame={onCompleteGame}
       storePosition={storePosition}

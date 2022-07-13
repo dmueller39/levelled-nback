@@ -6,16 +6,16 @@ import type { ProgressMapLocation } from "../progressMap";
 
 import Map from "./Map";
 
-export type Props = {|
-  storePosition: (number) => void,
-  setLocation: (ProgressMapLocation) => void,
-  settings: ?Settings,
-  results: GameResult[],
-  position: number,
-|};
+export type Props = {
+  storePosition: (position: number) => void;
+  setLocation: (location: ProgressMapLocation) => void;
+  settings: Settings | null;
+  results: GameResult[];
+  position: number;
+};
 
 type State = {
-  currentLocation: ?ProgressMapLocation,
+  currentLocation: ProgressMapLocation | null;
 };
 
 export default class Menu extends React.Component<Props, State> {

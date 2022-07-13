@@ -1,20 +1,21 @@
 // @flow
 import * as React from "react";
+import { ACTIVE_COLOR, INACTIVE_COLOR } from "../constants";
 import type { GamePlan } from "../gameLogic";
 import Grid from "./Grid";
 
 type Props = {
-  gamePlan: GamePlan,
-  currentStep: number,
-  width: number,
-  height: number,
+  gamePlan: GamePlan;
+  currentStep: number;
+  width: number;
+  height: number;
 };
 
 function squaresForTurn(gamePlan: GamePlan, turn: number): Array<string> {
   const squares = [];
   const squareCount = gamePlan.rows * gamePlan.columns;
   for (let index = 0; index < squareCount; index++) {
-    squares.push("white");
+    squares.push(INACTIVE_COLOR);
   }
 
   let squareIndex = 0;
@@ -25,14 +26,14 @@ function squaresForTurn(gamePlan: GamePlan, turn: number): Array<string> {
     const colorIndex = gamePlan.colors[turn];
     squares[squareIndex] = gamePlan.colorValues[colorIndex];
   } else {
-    squares[squareIndex] = "grey";
+    squares[squareIndex] = ACTIVE_COLOR;
   }
 
   return squares;
 }
 
 function getDisplay(
-  items: ?Array<any>,
+  items: Array<any> | null,
   currentStep: number,
   nBack: number,
   index: number
@@ -141,7 +142,7 @@ export default function MemoryDemo(props: Props) {
   return <div style={styles.container}>{grids}</div>;
 }
 
-const styles = {
+const styles: { [key: string]: React.CSSProperties } = {
   header: {
     flexDirection: "row",
   },
