@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/levelled-nback/static/css/main.417cbdc1.css",
-    "main.js": "/levelled-nback/static/js/main.83155375.js",
+    "main.js": "/levelled-nback/static/js/main.1b030910.js",
     "static/js/787.3f992f47.chunk.js": "/levelled-nback/static/js/787.3f992f47.chunk.js",
     "index.html": "/levelled-nback/index.html",
     "main.417cbdc1.css.map": "/levelled-nback/static/css/main.417cbdc1.css.map",
-    "main.83155375.js.map": "/levelled-nback/static/js/main.83155375.js.map",
+    "main.1b030910.js.map": "/levelled-nback/static/js/main.1b030910.js.map",
     "787.3f992f47.chunk.js.map": "/levelled-nback/static/js/787.3f992f47.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.417cbdc1.css",
-    "static/js/main.83155375.js"
+    "static/js/main.1b030910.js"
   ]
 }
