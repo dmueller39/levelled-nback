@@ -7,24 +7,10 @@ import { DEFAULT_SETTINGS } from "./constants";
 const POSITION_KEY = "mapNBack";
 const DEFAULT_NBACK_LEVEL = 1;
 
-function setBodyStyle() {
-  const body = document.body;
-  if (body != null) {
-    // body.style = "background: #EEEEEE;";
-  }
-}
-
 export default function MainNBack() {
-  const [position, setPosition] = useState(1);
+  const [position, setPosition] = useState(DEFAULT_NBACK_LEVEL);
   const [results, setResults] = useState([] as GameResult[]);
   useEffect(() => {
-    async function loadAll() {
-      const pval = sessionStorage.getItem(POSITION_KEY);
-      setPosition(pval != null ? parseInt(pval) : DEFAULT_NBACK_LEVEL);
-    }
-    setBodyStyle();
-    loadAll();
-
     window.onmessage = function (e) {
       if (typeof e.data === "string") {
         //
@@ -35,6 +21,15 @@ export default function MainNBack() {
             .slice(2)
             .map((data) => JSON.parse(data));
           setResults(res as GameResult[]);
+          const latest = res.reduce(
+            (max, current) =>
+              max == null || max.time < current.time ? current : max,
+            null
+          );
+
+          if (latest != null) {
+            setPosition((latest as GameResult).gamePlan.nBack);
+          }
         }
       }
     };
@@ -42,10 +37,6 @@ export default function MainNBack() {
       window.top.postMessage(window.location.href + ";ready", "*");
     }
   }, []);
-  function storePosition(p: number) {
-    setPosition(p);
-    sessionStorage.setItem(POSITION_KEY, (p || DEFAULT_NBACK_LEVEL).toString());
-  }
   function onCompleteGame(result: GameResult | null) {
     if (result != null) {
       const updated = [...results, result];
@@ -62,7 +53,7 @@ export default function MainNBack() {
     <NBack
       settings={DEFAULT_SETTINGS}
       onCompleteGame={onCompleteGame}
-      storePosition={storePosition}
+      storePosition={setPosition}
       position={position}
       results={results}
     />
