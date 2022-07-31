@@ -1,5 +1,5 @@
 // @flow
-import type { GamePlan, GameResult, Settings, GameLevel } from "./gameLogic";
+import type { GameResult, Settings, GameLevel } from "./gameLogic";
 
 export const NODE_START: ProgressMapLocationNodeType = 0;
 export const NODE_DEFAULT: ProgressMapLocationNodeType = 1;
@@ -136,17 +136,8 @@ export function getProgressMap(
   unsortedGameResults: GameResult[],
   gameSettings: Settings
 ): ProgressMapData {
-  const {
-    offset,
-    spacing,
-    minTurns,
-    maxTurns,
-    minTurnsPerMinute,
-    maxTurnsPerMinute,
-    steps,
-    minNBack,
-    maxNBack,
-  } = gameSettings.progressMap;
+  const { offset, minTurns, minTurnsPerMinute, steps, minNBack } =
+    gameSettings.progressMap;
 
   const gameResults = unsortedGameResults.sort((a, b) => b.time - a.time);
 

@@ -1,5 +1,5 @@
 // @flow
-import React, { useRef, useEffect, useCallback } from "react";
+import React from "react";
 import type { MasteryLevel } from "../progressMap";
 import {
   MASTERY_LEVEL_IN_PROGRESS,
@@ -12,8 +12,6 @@ type Props = {
   onPress: () => void;
   last3MasteryLevels: [MasteryLevel, MasteryLevel, MasteryLevel];
 };
-
-type State = {};
 
 function getFill(masteryLevel: MasteryLevel): string {
   switch (masteryLevel) {

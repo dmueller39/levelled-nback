@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import type { GameResult } from "./gameLogic";
 import { DEFAULT_SETTINGS } from "./constants";
 
-const POSITION_KEY = "mapNBack";
 const DEFAULT_NBACK_LEVEL = 1;
 
 export default function MainNBack() {
