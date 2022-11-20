@@ -40,8 +40,20 @@ export default function MainNBack() {
     if (result != null) {
       const updated = [...results, result];
       setResults(updated);
-      const message =
-        window.location.href + ";complete;" + JSON.stringify(result);
+
+      const dataObject = {
+        type: "game",
+        activitysummary: `${result.gamePlan.nBack} back, ${result.gamePlan.gameTurns} turns`,
+        resultsummary: `${result.gamePlan.gameTurns - result.mistakes} / ${
+          result.gamePlan.gameTurns
+        } correct`,
+        data: JSON.stringify(result),
+      };
+      const dataStr = JSON.stringify(dataObject);
+      const message = window.location.href + ";complete;" + dataStr;
+
+      console.log(message);
+
       if (window.top) {
         window.top.postMessage(message, "*");
       }
